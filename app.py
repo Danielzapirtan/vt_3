@@ -23,7 +23,7 @@ YOUTUBE_URL_RE = re.compile(
 )
 FASTER_WHISPER_SIZES = ["tiny", "base", "small", "medium", "large-v3"]
 MLX_SIZES = ["tiny", "base", "small", "medium", "large-v3"]
-LANGUAGES = {"ro": "Romanian", "en": "English"}
+LANGUAGES = {"ro": "Romanian", "en": "English", "fr": "French", "de": "German"}
 
 app = Flask(__name__)
 app.config["MAX_CONTENT_LENGTH"] = 2 * 1024 * 1024 * 1024  # 2 GB upload cap
