@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Video Transcriber</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="container">
+  <h1>Video Transcriber</h1>
+
+  <div class="source-tabs">
+    <button class="tab-btn active" data-tab="youtube">YouTube URL</button>
+    <button class="tab-btn" data-tab="upload">Upload File</button>
+  </div>
+
+  <div id="tab-youtube" class="tab-panel">
+    <input type="text" id="youtubeUrl" placeholder="https://www.youtube.com/watch?v=...">
+    <label class="checkbox-label">
+      <input type="checkbox" id="useCookies">
+      Authenticate with local Chrome cookies
+    </label>
+    <button id="loadYoutubeBtn">Load Video</button>
+  </div>
+
+  <div id="tab-upload" class="tab-panel hidden">
+    <input type="file" id="fileInput" accept="video/*">
+  </div>
+
+  <div id="status"></div>
+
+  <div id="videoSection" class="hidden">
+    <video id="preview" controls></video>
+
+    <div class="range-editor">
+      <div id="slider" class="slider">
+        <div id="sliderTrack" class="slider-track"></div>
+        <div id="handleStart" class="handle" tabindex="0"></div>
+        <div id="handleEnd" class="handle" tabindex="0"></div>
+      </div>
+      <div class="time-inputs">
+        <label>Start <input type="text" id="startInput" value="00:00:00.000"></label>
+        <label>End <input type="text" id="endInput" value="00:00:00.000"></label>
+      </div>
+    </div>
+
+    <div class="options">
+      <label>Engine
+        <select id="engineSelect">
+          <option value="faster_whisper">Faster Whisper</option>
+          <option value="whisper_mlx">Whisper MLX</option>
+        </select>
+      </label>
+      <label>Language
+        <select id="languageSelect">
+          <option value="ro">Romanian</option>
+          <option value="en">English</option>
+        </select>
+      </label>
+      <label>Model size
+        <select id="sizeSelect"></select>
+      </label>
+    </div>
+
+    <button id="transcribeBtn">Transcribe Selected Range</button>
+  </div>
+
+  <div id="resultSection" class="hidden">
+    <h2>Transcript</h2>
+    <textarea id="resultText" rows="10" readonly></textarea>
+    <div class="result-actions">
+      <button id="copyBtn">Copy</button>
+      <button id="downloadTxtBtn">Download .txt</button>
+      <button id="downloadSrtBtn">Download .srt</button>
+    </div>
+  </div>
+</div>
+<script src="/static/app.js"></script>
+</body>
+</html>
